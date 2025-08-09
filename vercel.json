@@ -6,9 +6,9 @@
       "destination": "/api/index.js"
     }
   ],
-  "buildCommand": "cd frontend && npm install && npm run build",
+  "buildCommand": "npm run build",
   "outputDirectory": "frontend/dist",
-  "installCommand": "npm install",
+  "installCommand": "npm run install:all",
   "env": {
     "NODE_ENV": "production"
   }
