@@ -10,7 +10,7 @@
     "build:backend": "cd backend && npm install --production",
     "start": "cd backend && npm start",
     "start:prod": "NODE_ENV=production cd backend && npm start",
-    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install --include=dev",
     "install:backend": "cd backend && npm install",
     "install:frontend": "cd frontend && npm install",
     "migrate": "cd backend && npm run migrate",
