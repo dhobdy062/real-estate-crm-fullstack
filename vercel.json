@@ -6,9 +6,9 @@
       "destination": "/api/index.js"
     }
   ],
-  "buildCommand": "cd frontend && npx vite build",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
-  "installCommand": "npm install && cd frontend && npm install",
+  "installCommand": "npm install",
   "env": {
     "NODE_ENV": "production"
   }
