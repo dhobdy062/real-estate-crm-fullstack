@@ -123,18 +123,20 @@ app.get('/health', (req, res) => {
 // Error handling middleware
 app.use(errorHandler);
 
-// Start the server
-const server = app.listen(PORT, () => {
-  logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
-});
+// Start the server only if not in serverless environment
+if (process.env.VERCEL !== '1') {
+  const server = app.listen(PORT, () => {
+    logger.info(`Server running on port ${PORT} in ${process.env.NODE_ENV} mode`);
+  });
 
-// Initialize WebSocket server for real-time notifications
-const notificationSocket = require('./utils/notificationSocket');
-notificationSocket.initialize(server);
+  // Initialize WebSocket server for real-time notifications
+  const notificationSocket = require('./utils/notificationSocket');
+  notificationSocket.initialize(server);
 
-// Handle unhandled promise rejections
-process.on('unhandledRejection', (err) => {
-  logger.error('Unhandled Rejection:', err);
-});
+  // Handle unhandled promise rejections
+  process.on('unhandledRejection', (err) => {
+    logger.error('Unhandled Rejection:', err);
+  });
+}
 
-module.exports = app; // For testing
+module.exports = app;
